@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MoscowTransport.WebService": {
+    "PoliceStations.WebService": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "routes",
