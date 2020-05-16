@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PoliceStations.InfrastructureServices.Gateways.Database;
+using Microsoft.EntityFrameworkCore;
 using PoliceStations.ApplicationServices.GetPoliceStationListUseCase;
+using PoliceStations.ApplicationServices.Ports.Gateways.Database;
 using PoliceStations.ApplicationServices.Repositories;
 using PoliceStations.DomainObjects.Ports;
-using PoliceStations.DomainObjects;
-using System.Collections.Generic;
 
 namespace PoliceStations.WebService
 {
@@ -23,41 +24,19 @@ namespace PoliceStations.WebService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<InMemoryPoliceStationRepository>(x => new InMemoryPoliceStationRepository(
-                new List<PoliceStation> {
-                    new PoliceStation()
-                    {
-                    Id = 1,
-                    Name = "Участковый пункт полиции № 1 по району Арбат",
-                    AdmArea = "Центральный административный округ",
-                    District = "район Арбат",
-                    Address = "Шубинский переулок, дом 7",
-                    ExtraInfo = "ФИО участкового, часы приема можно узнать через специальную форму поиска на сайте petrovka38.ru/Kontaktn…"
-                    },
-                    new PoliceStation()
-                    {
-                    Id = 1,
-                    Name = "Участковый пункт полиции № 2 по району Арбат",
-                    AdmArea = "Центральный административный округ",
-                    District = "район Арбат",
-                    Address = "Большой Николопесковский переулок, дом 3 ",
-                    ExtraInfo = "ФИО участкового, часы приема можно узнать через специальную форму поиска на сайте petrovka38.ru/Kontaktn…"
-                    },
-                    new PoliceStation()
-                    {
-                    Id = 1,
-                    Name = "Участковый пункт полиции № 3 по району Арбат",
-                    AdmArea = "Центральный административный округ",
-                    District = "район Арбат",
-                    Address = "Новинский бульвар, дом 12 ",
-                    ExtraInfo = "ФИО участкового, часы приема можно узнать через специальную форму поиска на сайте petrovka38.ru/Kontaktn…"
-                    }
-            }));
-            services.AddScoped<IReadOnlyPoliceStationRepository>(x => x.GetRequiredService<InMemoryPoliceStationRepository>());
-            services.AddScoped<IPoliceStationRepository>(x => x.GetRequiredService<InMemoryPoliceStationRepository>());
+            services.AddDbContext<PoliceStationContext>(opts => 
+                opts.UseSqlite($"Filename={System.IO.Path.Combine(System.Environment.CurrentDirectory, "PoliceStations.db")}")
+            );
+
+            services.AddScoped<IPoliceStationDatabaseGateway, PoliceStationEFSqliteGateway>();
+
+            services.AddScoped<DbPoliceStationRepository>();
+            services.AddScoped<IReadOnlyPoliceStationRepository>(x => x.GetRequiredService<DbPoliceStationRepository>());
+            services.AddScoped<IPoliceStationRepository>(x => x.GetRequiredService<DbPoliceStationRepository>());
 
             services.AddScoped<IGetPoliceStationListUseCase, GetPoliceStationListUseCase>();
 
+            
             services.AddControllers();
         }
 
@@ -70,7 +49,7 @@ namespace PoliceStations.WebService
             }
 
             app.UseRouting();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
