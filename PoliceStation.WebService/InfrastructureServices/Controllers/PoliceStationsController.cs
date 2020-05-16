@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PoliceStations.DomainObjects;
 
-namespace PoliceStations.WebService.Controllers
+namespace PoliceStations.WebService.InfrastructureServices.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -20,7 +20,7 @@ namespace PoliceStations.WebService.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<PoliceStation> GetPoliceStations()
+        public IEnumerable<PoliceStation> GetAllPoliceStations()
         {
             return new List<PoliceStation>() 
             { 
