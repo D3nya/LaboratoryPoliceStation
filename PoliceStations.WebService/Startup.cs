@@ -36,7 +36,7 @@ namespace PoliceStations.WebService
                     },
                     new PoliceStation()
                     {
-                    Id = 1,
+                    Id = 2,
                     Name = "Участковый пункт полиции № 2 по району Арбат",
                     AdmArea = "Центральный административный округ",
                     District = "район Арбат",
@@ -45,7 +45,7 @@ namespace PoliceStations.WebService
                     },
                     new PoliceStation()
                     {
-                    Id = 1,
+                    Id = 3,
                     Name = "Участковый пункт полиции № 3 по району Арбат",
                     AdmArea = "Центральный административный округ",
                     District = "район Арбат",

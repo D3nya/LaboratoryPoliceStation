@@ -17,10 +17,10 @@ namespace PoliceStations.DomainObjects.Ports
 
     public interface IPoliceStationRepository
     {
-        Task AddPoliceStation(PoliceStation route);
+        Task AddPoliceStation(PoliceStation policeStation);
 
-        Task RemovePoliceStation(PoliceStation route);
+        Task RemovePoliceStation(PoliceStation policeStation);
 
-        Task UpdatePoliceStation(PoliceStation route);
+        Task UpdatePoliceStation(PoliceStation policeStation);
     }
 }
