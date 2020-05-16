@@ -5,35 +5,47 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PoliceStations.DomainObjects;
+using PoliceStations.ApplicationServices.GetPoliceStationListUseCase;
+using PoliceStations.InfrastructureServices.Presenters;
 
-namespace PoliceStations.WebService.InfrastructureServices.Controllers
+namespace PoliceStations.InfrastructureServices.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class PoliceStationsController : ControllerBase
     {
         private readonly ILogger<PoliceStationsController> _logger;
+        private readonly IGetPoliceStationListUseCase _getPoliceStationListUseCase;
 
-        public PoliceStationsController(ILogger<PoliceStationsController> logger)
+        public PoliceStationsController(ILogger<PoliceStationsController> logger,
+                                        IGetPoliceStationListUseCase getPoliceStationListUseCase)
         {
             _logger = logger;
+            _getPoliceStationListUseCase = getPoliceStationListUseCase;
         }
 
         [HttpGet]
-        public IEnumerable<PoliceStation> GetAllPoliceStations()
+        public async Task<ActionResult> GetAllPoliceStations()
         {
-            return new List<PoliceStation>() 
-            { 
-                new PoliceStation()
-                {
-                    Id = 1,
-                    Name = "Участковый пункт полиции № 1 по району Арбат",
-                    AdmArea = "Центральный административный округ",
-                    District = "район Арбат",
-                    Address = "Шубинский переулок, дом 7",
-                    ExtraInfo = "ФИО участкового, часы приема можно узнать через специальную форму поиска на сайте petrovka38.ru/Kontaktn…"
-                }
-            };
+            var presenter = new PoliceStationListPresenter();
+            await _getPoliceStationListUseCase.Handle(GetPoliceStationListUseCaseRequest.CreateAllPoliceStationsRequest(), presenter);
+            return presenter.ContentResult;
+        }
+
+        [HttpGet("{policeStationId}")]
+        public async Task<ActionResult> GetPoliceStation(long policeStationId)
+        {
+            var presenter = new PoliceStationListPresenter();
+            await _getPoliceStationListUseCase.Handle(GetPoliceStationListUseCaseRequest.CreatePoliceStationRequest(policeStationId), presenter);
+            return presenter.ContentResult;
+        }
+
+        [HttpGet("Districts/{district}")]
+        public async Task<ActionResult> GetDistrictFilter(string district)
+        {
+            var presenter = new PoliceStationListPresenter();
+            await _getPoliceStationListUseCase.Handle(GetPoliceStationListUseCaseRequest.CreateDistrictPoliceStationRequest(district), presenter);
+            return presenter.ContentResult;
         }
     }
 }
