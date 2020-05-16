@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliceStation.WebService", "PoliceStation.WebService\PoliceStation.WebService.csproj", "{F9CCC38D-E19B-4174-9F68-69F1522A566D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliceStations.WebService", "PoliceStations.WebService\PoliceStations.WebService.csproj", "{B136FE90-DA92-4A72-B479-36C3A00FE5F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F9CCC38D-E19B-4174-9F68-69F1522A566D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9CCC38D-E19B-4174-9F68-69F1522A566D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9CCC38D-E19B-4174-9F68-69F1522A566D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9CCC38D-E19B-4174-9F68-69F1522A566D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B136FE90-DA92-4A72-B479-36C3A00FE5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B136FE90-DA92-4A72-B479-36C3A00FE5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B136FE90-DA92-4A72-B479-36C3A00FE5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B136FE90-DA92-4A72-B479-36C3A00FE5F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
