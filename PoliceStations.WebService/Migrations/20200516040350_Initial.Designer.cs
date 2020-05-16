@@ -8,7 +8,7 @@ using PoliceStations.InfrastructureServices.Gateways.Database;
 namespace PoliceStations.WebService.Migrations
 {
     [DbContext(typeof(PoliceStationContext))]
-    [Migration("20200516035718_Initial")]
+    [Migration("20200516040350_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
