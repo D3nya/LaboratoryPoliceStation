@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace PoliceStations.ApplicationServices.Repositories
 {
-    public class CachedReadOnlyPoliceStationsRepository : ReadOnlyPoliceStationRepositoryDecorator
+    public class CachedReadOnlyPoliceStationRepository : ReadOnlyPoliceStationRepositoryDecorator
     {
         private readonly IDomainObjectsCache<PoliceStation> _policeStationCache;
 
-        public CachedReadOnlyPoliceStationsRepository(IReadOnlyPoliceStationRepository policeStationRepository,
+        public CachedReadOnlyPoliceStationRepository(IReadOnlyPoliceStationRepository policeStationRepository,
                                              IDomainObjectsCache<PoliceStation> policeStationsCache)
             : base(policeStationRepository)
             => _policeStationCache = policeStationsCache;
