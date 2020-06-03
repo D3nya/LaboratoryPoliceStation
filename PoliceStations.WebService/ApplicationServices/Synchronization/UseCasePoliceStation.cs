@@ -19,7 +19,6 @@ namespace PoliceStations.ApplicationServices.Synchronization
     {
         public string Name { get; set; }
         public string AdmArea { get; set; }
-        public string District { get; set; }
         public string Address { get; set; }
         public string ExtraInfo { get; set; }
     }
@@ -55,7 +54,6 @@ namespace PoliceStations.ApplicationServices.Synchronization
                     Name = policeStation_cells[i].Cells.Name,
                     Id = policeStation_cells[i].Number,
                     AdmArea = policeStation_cells[i].Cells.AdmArea,
-                    District = policeStation_cells[i].Cells.District,
                     Address = policeStation_cells[i].Cells.Address,
                     ExtraInfo = policeStation_cells[i].Cells.ExtraInfo
                 });
