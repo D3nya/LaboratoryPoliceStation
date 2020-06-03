@@ -3,6 +3,7 @@ using PoliceStations.DomainObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PoliceStations.ApplicationServices.Synchronization;
 
 namespace PoliceStations.InfrastructureServices.Gateways.Database
 {
@@ -17,17 +18,9 @@ namespace PoliceStations.InfrastructureServices.Gateways.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PoliceStation>().HasData(
-                new PoliceStation()
-                {
-                    Id = 1,
-                    Name = "Участковый пункт полиции № 1 по району Арбат",
-                    AdmArea = "Центральный административный округ",
-                    District = "район Арбат",
-                    Address = "Шубинский переулок, дом 7",
-                    ExtraInfo = "ФИО участкового, часы приема можно узнать через специальную форму поиска на сайте petrovka38.ru/Kontaktn…"
-                }
-                );
-        }
+            var v = new UseCasePoliceStation();
+
+            modelBuilder.Entity<PoliceStation>().HasData(v.policeStations);
         }
     }
+}

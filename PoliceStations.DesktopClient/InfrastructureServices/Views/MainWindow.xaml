@@ -29,7 +29,7 @@
         </ListBox>
 
         <StackPanel Grid.Column="1" Background="#ABB5bf" DataContext="{Binding CurrentPoliceStation}">
-            <TextBlock Padding="2" FontSize="16" Text="Подробные Сведения о Пункте Полиции:"></TextBlock>
+            <TextBlock Padding="3" FontWeight="Bold" FontSize="16" Text="Подробные Сведения о Пункте Полиции:"></TextBlock>
             <TextBlock Padding="2" FontSize="12" Text="{Binding AdmArea}"></TextBlock>
             <TextBlock Padding="2" FontSize="12" Text="{Binding Name}"></TextBlock>
             <TextBlock Padding="2" FontSize="12" Text="{Binding District}"></TextBlock>
