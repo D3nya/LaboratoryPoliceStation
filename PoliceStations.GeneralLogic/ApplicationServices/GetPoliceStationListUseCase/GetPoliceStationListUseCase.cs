@@ -22,10 +22,6 @@ namespace PoliceStations.ApplicationServices.GetPoliceStationListUseCase
                 policeStations = (PoliceStation != null) ? new List<PoliceStation>() { PoliceStation } : new List<PoliceStation>();
                 
             }
-            else if (request.District != null)
-            {
-                policeStations = await _readOnlyPoliceStationRepository.QueryPoliceStations(new DistrictCriteria(request.District));
-            }
             else
             {
                 policeStations = await _readOnlyPoliceStationRepository.GetAllPoliceStations();
