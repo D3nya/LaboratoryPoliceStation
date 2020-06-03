@@ -23,7 +23,6 @@ namespace PoliceStations.InfrastructureServices.Gateways.Database
                     Id = 1,
                     Name = "Участковый пункт полиции № 1 по району Арбат",
                     AdmArea = "Центральный административный округ",
-                    District = "район Арбат",
                     Address = "Шубинский переулок, дом 7",
                     ExtraInfo = "ФИО участкового, часы приема можно узнать через специальную форму поиска на сайте petrovka38.ru/Kontaktn…"
                 }
