@@ -28,7 +28,7 @@ namespace PoliceStations.ApplicationServices.Repositories
             return Task.CompletedTask;
         }
 
-        public Task<IEnumerable<PoliceStation>> GetPoliceStations()
+        public Task<IEnumerable<PoliceStation>> GetAllPoliceStations()
         {
             return Task.FromResult(_policeStation.AsEnumerable());
         }
@@ -38,7 +38,7 @@ namespace PoliceStations.ApplicationServices.Repositories
             return Task.FromResult(_policeStation.Where(r => r.Id == id).FirstOrDefault());
         }
 
-        public Task<IEnumerable<PoliceStation>> QueryPoliceStation(ICriteria<PoliceStation> criteria)
+        public Task<IEnumerable<PoliceStation>> QueryPoliceStations(ICriteria<PoliceStation> criteria)
         {
             return Task.FromResult(_policeStation.Where(criteria.Filter.Compile()).AsEnumerable());
         }

@@ -24,11 +24,11 @@ namespace PoliceStations.ApplicationServices.GetPoliceStationListUseCase
             }
             else if (request.District != null)
             {
-                policeStations = await _readOnlyPoliceStationRepository.QueryPoliceStation(new DistrictCriteria(request.District));
+                policeStations = await _readOnlyPoliceStationRepository.QueryPoliceStations(new DistrictCriteria(request.District));
             }
             else
             {
-                policeStations = await _readOnlyPoliceStationRepository.GetPoliceStations();
+                policeStations = await _readOnlyPoliceStationRepository.GetAllPoliceStations();
             }
             outputPort.Handle(new GetPoliceStationListUseCaseResponse(policeStations));
             return true;

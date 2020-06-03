@@ -19,10 +19,10 @@ namespace PoliceStations.ApplicationServices.Repositories
         public async Task<PoliceStation> GetPoliceStation(long id)
             => await _databaseGateway.GetPoliceStation(id);
 
-        public async Task<IEnumerable<PoliceStation>> GetPoliceStations()
+        public async Task<IEnumerable<PoliceStation>> GetAllPoliceStations()
             => await _databaseGateway.GetAllPoliceStaions();
 
-        public async Task<IEnumerable<PoliceStation>> QueryPoliceStation(ICriteria<PoliceStation> criteria)
+        public async Task<IEnumerable<PoliceStation>> QueryPoliceStations(ICriteria<PoliceStation> criteria)
             => await _databaseGateway.QueryPoliceStations(criteria.Filter);
 
         public async Task AddPoliceStation(PoliceStation policeStation)

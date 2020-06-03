@@ -9,9 +9,9 @@ namespace PoliceStations.DomainObjects.Ports
     {
         Task<PoliceStation> GetPoliceStation(long id);
 
-        Task<IEnumerable<PoliceStation>> GetPoliceStations();
+        Task<IEnumerable<PoliceStation>> GetAllPoliceStations();
 
-        Task<IEnumerable<PoliceStation>> QueryPoliceStation(ICriteria<PoliceStation> criteria);
+        Task<IEnumerable<PoliceStation>> QueryPoliceStations(ICriteria<PoliceStation> criteria);
 
     }
 
